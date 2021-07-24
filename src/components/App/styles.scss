@@ -1,0 +1,21 @@
+.app {
+  width: 60%;
+  margin: 1em auto;
+  text-align: center;
+  background-color: #ecf0f1;
+
+  &--body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .ui.card:first-child{
+    margin-top: 1em;
+  }
+  
+  .ui.segment{
+    margin: 1em;
+  }
+}
+
