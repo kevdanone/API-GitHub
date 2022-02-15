@@ -25,11 +25,15 @@ const App = () => {
   }
 
   const handlePageClick = (e, pageInfo) =>{
-    console.log('!!!!');
+    //console.log('!!!!');
     console.log(pageInfo);
     setCurentPage(pageInfo.activePage)
   }
 
+  /* Fonction qui utilise axios:
+     axios effectue une demande GET sur une URL de l'API 
+     pour obtenir une promesse qui renvoie un objet "response" contenant les data de l'API
+  */
   const loadRepo = () => {
     axios.get(`https://api.github.com/search/repositories?q=${valueSearch}&sort=stars&order=desc&page=${curentPage}&per_page=9`)
     .then((response) =>{
@@ -45,7 +49,11 @@ const App = () => {
       setTotalPage(1);
     })
   }
-  
+  /* utilisation de useEffect: 
+     une fois le rendu initial effectué, on déclenche la fonction loadRepo qui va charger les repos automatiquement, 
+     on ajoute les contraintes "valueSearch" et "currentPage" pour éviter de redéclencher useEffect
+     si il n'y a pas de changement des données "valueSearch" et "currentPage"
+  */ 
   useEffect(
     ()=>{
       loadRepo();
